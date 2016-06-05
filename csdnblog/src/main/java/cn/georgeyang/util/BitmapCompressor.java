@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * 图片压缩工具类
@@ -111,6 +112,8 @@ public class BitmapCompressor {
 	压缩图片，处理某些手机拍照角度旋转的问题
 	*/
 	public static void compressImage(String filePath,String toFilePath,int maxkb,int reqWidth, int reqHeight) {
+		FileOutputStream fout = null;
+		ByteArrayOutputStream baos = null;
 		try {
 			BitmapFactory.Options options = new BitmapFactory.Options();
 			options.inJustDecodeBounds = true;
@@ -124,9 +127,9 @@ public class BitmapCompressor {
 			Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
 			
 			File saveFile = new File(toFilePath);
-	        FileOutputStream fout = new FileOutputStream(saveFile);  
+	        fout = new FileOutputStream(saveFile);  
 	        
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			baos = new ByteArrayOutputStream();
 	        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
 			int quality = 100;
 			while (baos.toByteArray().length / 1024 > maxkb) { // 循环判断如果压缩后图片是否大于(maxkb)kb,大于继续压缩
@@ -137,10 +140,8 @@ public class BitmapCompressor {
 				}
 				bitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);// 这里压缩options%，把压缩后的数据存放到baos中
 			}
-			baos.close();
 			fout.write(baos.toByteArray());
 			fout.flush();  
-			fout.close();
 			
             if(!bitmap.isRecycled()){  
                 bitmap.recycle();//记得释放资源，否则会内存溢出  
@@ -148,6 +149,19 @@ public class BitmapCompressor {
             bitmap=null;
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (fout != null)
+					fout.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try {
+				if (baos != null)
+					baos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
