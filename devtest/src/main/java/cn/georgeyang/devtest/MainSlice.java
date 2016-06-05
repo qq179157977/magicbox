@@ -76,7 +76,7 @@ public class MainSlice extends Slice implements View.OnClickListener {
             case R.id.listPlugin:
                 Mdb.init(this);
                 List<PluginItemEntity> list = Mdb.getInstance().findAll(PluginItemEntity.class);
-                if (list==null || list.size()==0) {
+                if (list==null || list.isEmpty()) {
                     showMsg("未安装任何插件!");
                 } else {
                     List<String> names = new ArrayList<>();
@@ -120,7 +120,7 @@ public class MainSlice extends Slice implements View.OnClickListener {
         if (requestCode==100) {
             if (resultCode==RESULT_OK) {
                 ArrayList<String> list = data.getStringArrayListExtra("select_result");
-                if (!(list==null || list.size()==0)) {
+                if (!(list==null || list.isEmpty())) {
                     String path = list.get(0);
                     showMsg(path);
                 }

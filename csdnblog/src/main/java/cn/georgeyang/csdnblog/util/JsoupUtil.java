@@ -461,7 +461,7 @@ public class JsoupUtil {
 			Element c = content.child(j); // 获取每个元素
 
 			// 抽取出图片
-			if (c.select("img").size() > 0) {
+			if (!c.select("img").isEmpty()) {
 				Elements imgs = c.getElementsByTag("img");
 				System.out.println("img");
 				for (Element img : imgs) {

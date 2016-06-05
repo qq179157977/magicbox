@@ -185,7 +185,7 @@ abstract class OkRequestBase {
 
     public static Request buildPostRequest(Object requestTag,String url, Map<String, Object> params) {
         RequestBody body;
-        if (!(params==null || params.size()==0)) {
+        if (!(params==null || params.isEmpty())) {
             FormEncodingBuilder builder = new FormEncodingBuilder();
             for (String key:params.keySet()) {
                 if (!TextUtils.isEmpty(key)) {

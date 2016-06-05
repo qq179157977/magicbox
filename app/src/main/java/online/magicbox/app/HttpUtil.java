@@ -85,7 +85,7 @@ public class HttpUtil {
     }
 
     public static String post(String urlPath, Map<String, Object> params) {
-        if (params == null || params.size() == 0) {
+        if (params == null || params.isEmpty()) {
             return get(urlPath);
         }
         OutputStream os = null;

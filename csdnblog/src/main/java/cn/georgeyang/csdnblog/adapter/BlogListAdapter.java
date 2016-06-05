@@ -55,7 +55,7 @@ public class BlogListAdapter extends BaseAdapter {
 	}
 
 	public void removeItem(int position) {
-		if (list.size() > 0) {
+		if (!list.isEmpty()) {
 			list.remove(position);
 		}
 	}

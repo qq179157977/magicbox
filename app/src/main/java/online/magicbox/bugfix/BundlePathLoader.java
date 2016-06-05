@@ -300,7 +300,7 @@ public class BundlePathLoader {
             expandFieldArray(dexPathList, "dexElements", makeDexElements(dexPathList,
                     new ArrayList<File>(additionalClassPathEntries), optimizedDirectory,
                     suppressedExceptions),isHotFix);
-            if (suppressedExceptions.size() > 0) {
+            if (!suppressedExceptions.isEmpty()) {
                 for (IOException e : suppressedExceptions) {
                     Log.w(TAG, "Exception in makeDexElement", e);
 

@@ -314,7 +314,7 @@ public class PLA_ListView extends PLA_AbsListView {
 	 *         view
 	 */
 	public boolean removeHeaderView(View v) {
-		if (mHeaderViewInfos.size() > 0) {
+		if (!mHeaderViewInfos.isEmpty()) {
 			boolean result = false;
 			if (((PLA_HeaderViewListAdapter) mAdapter).removeHeader(v)) {
 				mDataSetObserver.onChanged();
@@ -391,7 +391,7 @@ public class PLA_ListView extends PLA_AbsListView {
 	 * true if the view was removed, false if the view was not a footer view
 	 */
 	public boolean removeFooterView(View v) {
-		if (mFooterViewInfos.size() > 0) {
+		if (!mFooterViewInfos.isEmpty()) {
 			boolean result = false;
 			if (((PLA_HeaderViewListAdapter) mAdapter).removeFooter(v)) {
 				mDataSetObserver.onChanged();
@@ -439,7 +439,7 @@ public class PLA_ListView extends PLA_AbsListView {
 		resetList();
 		mRecycler.clear();
 
-		if (mHeaderViewInfos.size() > 0|| mFooterViewInfos.size() > 0) {
+		if (!mHeaderViewInfos.isEmpty() || !mFooterViewInfos.isEmpty()) {
 			mAdapter = new PLA_HeaderViewListAdapter(mHeaderViewInfos, mFooterViewInfos, adapter);
 		} else {
 			mAdapter = adapter;

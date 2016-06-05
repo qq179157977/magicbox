@@ -86,13 +86,13 @@ public class ImageGridAdapter extends BaseAdapter {
                 mSelectedImages.add(image);
             }
         }
-        if(mSelectedImages.size() > 0){
+        if(!mSelectedImages.isEmpty()){
             notifyDataSetChanged();
         }
     }
 
     private Image getImageByPath(String path){
-        if(mImages != null && mImages.size()>0){
+        if(mImages != null && !mImages.isEmpty()){
             for(Image image : mImages){
                 if(image.path.equalsIgnoreCase(path)){
                     return image;
@@ -109,7 +109,7 @@ public class ImageGridAdapter extends BaseAdapter {
     public void setData(List<Image> images) {
         mSelectedImages.clear();
 
-        if(images != null && images.size()>0){
+        if(images != null && !images.isEmpty()){
             mImages = images;
         }else{
             mImages.clear();

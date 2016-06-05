@@ -566,7 +566,7 @@ public class Mdb {
 //            Log.e(TAG, "error:" + e.getMessage());
 //            e.printStackTrace();
 //        }
-        return getNewFields(clazz).size()==0;
+        return getNewFields(clazz).isEmpty();
     }
 
     public <T> List<T> findAll(Class<T> clazz) {
@@ -780,7 +780,7 @@ public class Mdb {
     public <T> T findOnelBySql(Class<T> clazz, String strSQL) {
 //		try {
         List<T> list = findAllBySql(clazz, strSQL);
-        if (list == null || list.size() == 0) {
+        if (list == null || list.isEmpty()) {
             return null;
         } else {
             return list.get(0);
