@@ -357,6 +357,6 @@ public class HttpUtil {
                 output.write(buffer,0,len);
             }
             output.flush();
-
+            output.close();
     }
 }

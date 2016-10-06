@@ -132,17 +132,24 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
 	private static String readFileContent(File file) {
 		String fileContent = "";
+		BufferedReader br = null;
 		try {
 			String line = "";
-			BufferedReader br = new BufferedReader(new FileReader(file));
+			br = new BufferedReader(new FileReader(file));
 			StringBuffer buffer = new StringBuffer();
 			while ((line = br.readLine()) != null) {
 				buffer.append(line + "\n");
 			}
 			fileContent = buffer.toString();
-			br.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return fileContent;
 	}
