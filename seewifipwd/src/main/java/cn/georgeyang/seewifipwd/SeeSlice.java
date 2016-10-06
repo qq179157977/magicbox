@@ -45,7 +45,7 @@ public class SeeSlice extends Slice {
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (list==null || list.size()==0) {
+            if (list==null || list.isEmpty()) {
                 new AlertDialog.Builder(SeeSlice.this).setCancelable(false).setTitle("提示").setMessage("没有权限,软件不能获取wifi密码数据").setNegativeButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

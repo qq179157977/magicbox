@@ -269,7 +269,7 @@ public class BlogContentSlice extends Slice implements OnClickListener,OnChecked
 			mWebView.goBack();
 
 			// 处理历史加载页面
-			if (mHistoryUrlList != null && mHistoryUrlList.size() > 0) {
+			if (mHistoryUrlList != null && !mHistoryUrlList.isEmpty()) {
 				int lastHistoryIndex = mHistoryUrlList.size() - 1;
 				getData(false,mHistoryUrlList.get(lastHistoryIndex));
 				mHistoryUrlList.remove(lastHistoryIndex);

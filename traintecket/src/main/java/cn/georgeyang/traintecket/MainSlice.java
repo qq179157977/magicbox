@@ -304,7 +304,7 @@ public class MainSlice extends Slice implements OnClickListener
 						String result = toString(input);
 						if(result!=null) {
 							list = TableName.parseJsonTiket(result);
-							if(list!=null&&list.size()>0)
+							if(list!=null&& !list.isEmpty())
 							{
 								handler.sendEmptyMessage(1);
 							}

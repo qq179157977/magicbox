@@ -119,7 +119,7 @@ public class MainSlice extends Slice implements View.OnClickListener {
         } else if (requestCode==100) {
             if (resultCode==RESULT_OK) {
                 ArrayList<String> list = data.getStringArrayListExtra("select_result");
-                if (!(list==null || list.size()==0)) {
+                if (!(list==null || list.isEmpty())) {
                     String path = list.get(0);
                     Log.i("test","path:" + path);
                     Result ret = CreateQRImageTest.scanningImage(path);

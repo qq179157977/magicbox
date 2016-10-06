@@ -32,7 +32,7 @@ public class Giffle {
      */
     public static boolean Encode(String fileName, List<File> files, int delay)
     {
-        if(files==null||files.size()==0)
+        if(files==null|| files.isEmpty())
         {
             Log.e("test","Bitmaps should have content!!!");
             return false;

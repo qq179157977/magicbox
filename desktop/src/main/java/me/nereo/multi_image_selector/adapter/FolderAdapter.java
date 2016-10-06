@@ -44,7 +44,7 @@ public class FolderAdapter extends BaseAdapter {
      * @param folders
      */
     public void setData(List<Folder> folders) {
-        if(folders != null && folders.size()>0){
+        if(folders != null && !folders.isEmpty()){
             mFolders = folders;
         }else{
             mFolders.clear();
@@ -81,7 +81,7 @@ public class FolderAdapter extends BaseAdapter {
             if(i == 0){
                 holder.name.setText(R.string.folder_all);
                 holder.size.setText(getTotalImageSize()+mContext.getString(R.string.tv_count)+"");
-                if(mFolders.size()>0){
+                if(!mFolders.isEmpty()){
                     Folder f = mFolders.get(0);
                     ImageLoder.loadImage(holder.cover,new File(f.cover.path),mImageSize,mImageSize,R.drawable.default_error);
 //                    Picasso.with(mContext)
@@ -105,7 +105,7 @@ public class FolderAdapter extends BaseAdapter {
 
     private int getTotalImageSize(){
         int result = 0;
-        if(mFolders != null && mFolders.size()>0){
+        if(mFolders != null && !mFolders.isEmpty()){
             for (Folder f: mFolders){
                 result += f.images.size();
             }

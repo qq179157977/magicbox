@@ -239,7 +239,7 @@ public class BlogCommentSlice extends Slice implements IXListViewRefreshListener
 //				List<Comment> list = mBlogCommentDao.query(mPage);
 
                 List<BlogComment> list = Mdb.getInstance().findAllbyWhere(BlogComment.class,String.format("fileName=%s",new Object[]{mFileName}));
-				if (!(list == null || list.size()==0)) {
+				if (!(list == null || list.isEmpty())) {
 					mAdapter.setList(list);
 					mAdapter.notifyDataSetChanged();
 					mListView.setPullLoadEnable(BlogCommentSlice.this);

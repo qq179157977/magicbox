@@ -686,7 +686,7 @@ public class PluginActivity extends Activity {
         callMethodByCache(mSlice, "onPermissionGiven", new Class[]{int.class,String.class}, new Object[]{requestCode,permission});
 
         List<Fragment> fragmentList = getFragments(getFragmentManager());
-        if (!(fragmentList == null || fragmentList.size()==0)) {
+        if (!(fragmentList == null || fragmentList.isEmpty())) {
             for (Fragment fragment:fragmentList) {
                 if (!(fragment==null || !fragment.isAdded())) {
                     callMethodByCache(fragment, "onPermissionGiven", new Class[]{int.class,String.class}, new Object[]{requestCode,permission});

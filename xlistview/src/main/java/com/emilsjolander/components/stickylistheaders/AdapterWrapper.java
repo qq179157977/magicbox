@@ -146,7 +146,7 @@ public class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdap
 	}
 
 	private View popHeader() {
-		if(mHeaderCache.size() > 0) {
+		if(!mHeaderCache.isEmpty()) {
 			return mHeaderCache.remove(0);
 		}
 		return null;

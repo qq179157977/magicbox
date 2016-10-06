@@ -143,7 +143,7 @@ public class MultiImageSelectorFragment extends PluginFragment {
         // 默认选择
         if(mode == MODE_MULTI) {
             ArrayList<String> tmp = getArguments().getStringArrayList(EXTRA_DEFAULT_SELECTED_LIST);
-            if(tmp != null && tmp.size()>0) {
+            if(tmp != null && !tmp.isEmpty()) {
                 resultList = tmp;
             }
         }
@@ -313,7 +313,7 @@ public class MultiImageSelectorFragment extends PluginFragment {
                                 mImageAdapter.setData(folder.images);
                                 mCategoryText.setText(folder.name);
                                 // 设定默认选择
-                                if (resultList != null && resultList.size() > 0) {
+                                if (resultList != null && !resultList.isEmpty()) {
                                     mImageAdapter.setDefaultSelected(resultList);
                                 }
                             }
@@ -425,7 +425,7 @@ public class MultiImageSelectorFragment extends PluginFragment {
             if(mode == MODE_MULTI) {
                 if (resultList.contains(image.path)) {
                     resultList.remove(image.path);
-                    if(resultList.size() != 0) {
+                    if(!resultList.isEmpty()) {
                         mPreviewBtn.setEnabled(true);
                         mPreviewBtn.setText(getPluginResources().getString(R.string.preview) + "(" + resultList.size() + ")");
                     }else{
@@ -522,7 +522,7 @@ public class MultiImageSelectorFragment extends PluginFragment {
                     mImageAdapter.setData(images);
 
                     // 设定默认选择
-                    if(resultList != null && resultList.size()>0){
+                    if(resultList != null && !resultList.isEmpty()){
                         mImageAdapter.setDefaultSelected(resultList);
                     }
 
